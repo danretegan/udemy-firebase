@@ -1,4 +1,5 @@
 const list = document.querySelector('ul');
+const form = document.querySelector('form');
 
 const addRecipe = recipe => {
   //   console.log(recipe.created_at.toDate());
@@ -14,6 +15,7 @@ const addRecipe = recipe => {
   list.innerHTML += html;
 };
 
+//! get documents:
 db.collection('recipes')
   .get()
   .then(snapshoot => {
@@ -27,3 +29,25 @@ db.collection('recipes')
   .catch(err => {
     console.log(err);
   });
+
+//! add documents:
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const now = new Date();
+
+  //* Definim obiectul (documentul) si modalitatea de a obtine datele:
+  const recipe = {
+    title: form.recipe.value, // Obținem titlul rețetei din formular.
+    created_at: firebase.firestore.Timestamp.fromDate(now), // Setăm data curentă.
+  };
+
+  db.collection('recipes')
+    .add(recipe)
+    .then(() => {
+      console.log('recipe added!');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
