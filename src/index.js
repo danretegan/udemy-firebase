@@ -7,7 +7,7 @@ const addRecipe = (recipe, id) => {
   <li recipe-id="${id}">
   <div>${recipe.title}</div>
   <div><small>author: ${recipe.author}</small></div>
-  <div><small>date: ${recipe.created_at.toDate()}</small></div>
+  <div><small>date: ${recipe.created_at.toDate().toLocaleString()}</small></div>
   <button class="btn btn-danger btn-sm my-2">delete</button>
   </li>
   `;
