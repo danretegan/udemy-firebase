@@ -6,8 +6,8 @@ const addRecipe = recipe => {
   let html = `
   <li>
   <div>${recipe.title}</div>
-  <div>author: ${recipe.author}</div>
-  <div>date: ${recipe.created_at.toDate()}</div>
+  <div><small>author: ${recipe.author}</small></div>
+  <div><small>date: ${recipe.created_at.toDate()}</small></div>
   </li>
   `;
 
